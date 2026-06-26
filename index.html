@@ -327,8 +327,10 @@
   font-size: 1.05rem; max-width: 460px; line-height: 1.85; margin-bottom: 3.5rem;
 }
 .contact-cards {
-  display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 2px; background: var(--cream-warm); margin-bottom: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2px;
+  background: var(--cream-warm);
 }
 .cc {
   background: var(--cream); padding: 2.5rem 1.8rem;
@@ -488,6 +490,12 @@ footer {
 /* Celular em paisagem: evita hero gigante cortando conteúdo */
 @media (max-height: 480px) and (orientation: landscape) {
   .hero { min-height: auto; padding: 8rem 1.5rem 3rem; }
+}
+
+@media (max-width: 470px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
