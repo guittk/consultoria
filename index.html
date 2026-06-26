@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Trovalim Consultoria</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
     :root {
       --wine: #3D0B12;
@@ -61,16 +62,33 @@
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--gold); transition: all .3s; }
 .mob-nav {
-  display: none; position: fixed; inset: 0;
-  background: var(--wine-dark); z-index: 999;
-  flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--wine-dark);
+  z-index: 2000;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
 }
 .mob-nav.open { display: flex; }
 .mob-nav a { color: var(--gold); font-family: var(--serif); font-size: 1.6rem; letter-spacing: .12em; }
 .mob-close {
-  position: absolute; top: 1.5rem; right: 1.5rem;
-  color: var(--gold); font-size: 1.4rem; cursor: pointer;
-  background: none; border: none; font-family: var(--sans);
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+
+  z-index: 2001;
+
+  color: var(--gold);
+  font-size: 1.4rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--sans);
+
   display: none;
 }
 .mob-nav.open .mob-close { display: block; }
@@ -229,7 +247,7 @@
   font-family: var(--serif); font-style: italic; opacity: .85;
 }
 .steps {
-  display: grid; grid-template-columns: repeat(5,1fr);
+  display: grid; grid-template-columns: repeat(4,1fr);
   gap: 1px; background: rgba(201,169,110,.18); margin-bottom: 4rem;
 }
 .step {
@@ -424,14 +442,13 @@ footer {
   .nav-links { gap: 1.6rem; }
 }
 
+
 /* Tablets em paisagem (largura grande, mas ainda assim tablet) */
 @media (max-width: 960px) {
   .nav { padding: 1.1rem 1.75rem; }
   .nav.scrolled { padding: .9rem 1.75rem; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
-  .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .photo-frame { aspect-ratio: 4/3; max-width: 340px; margin: 0 auto; }
   .steps { grid-template-columns: 1fr 1fr; }
   .diffs { grid-template-columns: 1fr; gap: 2rem; }
   .cards { grid-template-columns: 1fr; }
@@ -460,7 +477,6 @@ footer {
   .photo-frame { aspect-ratio: 4/3; max-width: 380px; margin: 0 auto; }
   .steps { grid-template-columns: repeat(2,1fr); }
   .diffs { grid-template-columns: 1fr; gap: 2rem; }
-  .cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .testi-grid { grid-template-columns: 1fr; gap: 1.25rem; max-width: 540px; margin: 3.5rem auto 0; }
   .contact-cards { grid-template-columns: repeat(2,1fr); max-width: 640px; margin: 0 auto 5rem; }
   .stats { gap: 2rem; }
@@ -518,7 +534,7 @@ footer {
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <div class="nav-logo"><img src="logo_gt.png" alt="GT" style="width:38px;height:38px;object-fit:cover;border-radius:50%;vertical-align:middle;margin-right:8px;" />GT Consultoria de Carreira</div>
+  <a href="#home" class="nav-logo"><img src="logo_gt.png" alt="GT" style="width:38px;height:38px;object-fit:cover;border-radius:50%;vertical-align:middle;margin-right:8px;"></a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#empresas">Para Empresas</a></li>
@@ -527,7 +543,11 @@ footer {
     <li><a href="#contato">Contato</a></li>
   </ul>
   <a href="#contato" class="nav-cta">Vamos Conversar</a>
-  <div class="hamburger" onclick="openNav()"><span></span><span></span><span></span></div>
+  <div class="hamburger" id="hamburger" onclick="openNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </nav>
 
 <div class="mob-nav" id="mobNav">
@@ -544,10 +564,10 @@ footer {
   <!-- <img src="logo_gt.png" alt="GT Consultoria de Carreira" style="width:130px;height:130px;object-fit:cover;border-radius:50%;margin:0 auto 2rem;display:block;border:2px solid rgba(201,169,110,0.4);" /> -->
   <img src="logo_gt.png" alt="GT Consultoria de Carreira" style="width:130px;height:130px;object-fit:cover;border-radius:50%;margin:0 auto 2rem;display:block;" />
   <h1 class="hero-name">Geovana Trovalim</h1>
-<p class="hero-sub">
-  Consultoria de Carreira <span class="dot">·</span> Recrutamento e Seleção
-</p>
-<div class="divider-line"></div>
+  <p class="hero-sub">
+    Consultoria de Carreira <span class="dot">·</span> Recrutamento e Seleção
+  </p>
+  <div class="divider-line"></div>
   <p class="hero-tagline">Conectando talentos a resultados reais.</p>
   <div class="hero-btns">
     <a href="#empresas" class="btn-gold">Para Empresas</a>
@@ -598,11 +618,17 @@ footer {
       <p class="emp-lead">Contratações equivocadas custam tempo, dinheiro e energia. Com método e critério, ajudo a sua empresa a encontrar o profissional certo, com agilidade e confiança.</p>
     </div>
     <div class="steps reveal">
-      <div class="step"><div class="step-n">01</div><div class="step-t">Diagnóstico</div><div class="step-d">Entendemos a cultura, o cargo e o perfil ideal para a sua realidade</div></div>
-      <div class="step"><div class="step-n">02</div><div class="step-t">Mapeamento</div><div class="step-d">Busca ativa de candidatos alinhados ao perfil e à cultura definidos</div></div>
-      <div class="step"><div class="step-n">03</div><div class="step-t">Triagem</div><div class="step-d">Avaliação de competências técnicas e comportamentais com rigor</div></div>
-      <div class="step"><div class="step-n">04</div><div class="step-t">Entrevistas</div><div class="step-d">Entrevistas estruturadas com relatório detalhado de cada candidato</div></div>
-      <div class="step"><div class="step-n">05</div><div class="step-t">Apresentação</div><div class="step-d">Shortlist qualificado e suporte até a integração do profissional</div></div>
+      <div class="step"><div class="step-n">01</div><div class="step-t">Diagnóstico</div><div class="step-d">Entendimento da cultura, cargo e perfil ideal</div></div>
+      <div class="step"><div class="step-n">02</div><div class="step-t">Mapeamento</div><div class="step-d">Busca ativa de candidatos aderentes ao perfil</div></div>
+      <div class="step"><div class="step-n">03</div><div class="step-t">Avaliação</div><div class="step-d">Triagem técnica e comportamental estruturada</div></div>
+      <div class="step"><div class="step-n">04</div><div class="step-t">Apresentação</div><div class="step-d">Shortlist qualificado e suporte na decisão final</div></div>
+    </div>
+    <div class="reveal" style="margin-top:4rem;">
+      <p class="eyebrow">Diferenciais</p>
+      <h3 class="sec-title" style="font-size:1.6rem;">
+        Por que esse método funciona
+      </h3>
+      <div class="gold-bar"></div>
     </div>
     <div class="diffs reveal">
       <div class="diff">
@@ -787,19 +813,39 @@ footer {
 </footer>
 
 
-
 <script>
   // Nav
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', scrollY > 60); });
-  function openNav() { document.getElementById('mobNav').classList.add('open'); }
-  function closeNav() { document.getElementById('mobNav').classList.remove('open'); }
+  const mobNav = document.getElementById('mobNav');
+  const hamburger = document.getElementById('hamburger');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  function openNav() {
+    mobNav.classList.add('open');
+    hamburger.style.display = 'none';
+  }
+
+  function closeNav() {
+    mobNav.classList.remove('open');
+    hamburger.style.display = 'flex';
+  }
 
   // Scroll reveal
   const els = document.querySelectorAll('.reveal');
+
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-  }, { threshold: 0.08 });
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('vis');
+      }
+    });
+  }, {
+    threshold: 0.08
+  });
+
   els.forEach(el => obs.observe(el));
 </script>
 
