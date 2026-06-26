@@ -89,13 +89,6 @@
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(201,169,110,.3), transparent);
 }
-.hero-logo {
-  font-family: var(--serif); font-size: 2.6rem; font-weight: 600;
-  color: var(--gold); letter-spacing: .15em;
-  width: auto; margin: 0 auto 2.5rem;
-  opacity: 0; animation: fadeUp .9s ease .3s forwards;
-  filter: drop-shadow(0 0 40px rgba(201,169,110,.15));
-}
 .hero-name {
   font-family: var(--serif); font-size: clamp(1.8rem,4.5vw,3.2rem);
   font-weight: 500; color: var(--gold); letter-spacing: .3em; text-transform: uppercase;
@@ -357,24 +350,6 @@
 }
 .cc-val { font-size: .83rem; color: var(--graphite); transition: color .35s; }
 
-/* ── BIG CTA ── */
-.big-cta {
-  background: var(--wine); text-align: center;
-  padding: 6rem 2rem; position: relative; overflow: hidden;
-}
-.big-cta::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(201,169,110,.08) 0%, transparent 60%);
-}
-.big-cta-t {
-  font-family: var(--serif); font-size: clamp(1.9rem,4.5vw,3.2rem);
-  color: var(--gold); font-weight: 500; margin-bottom: .9rem; position: relative;
-}
-.big-cta-s {
-  color: var(--gold-light); font-size: .95rem; opacity: .7;
-  margin-bottom: 2.8rem; position: relative;
-}
-
 /* ── FOOTER ── */
 footer {
   background: var(--wine-dark); padding: 3.5rem 2rem; text-align: center;
@@ -423,14 +398,14 @@ footer {
 
 /* ── RESPONSIVE ── */
 
-/* Tablets grandes / notebooks pequenos */
+/* Notebooks pequenos / telas médias em paisagem */
 @media (max-width: 1100px) {
   .nav { padding: 1.2rem 2.25rem; }
   .nav.scrolled { padding: 1rem 2.25rem; }
   .nav-links { gap: 1.6rem; }
 }
 
-/* Tablets (ex: iPad retrato/paisagem) */
+/* Tablets em paisagem (largura grande, mas ainda assim tablet) */
 @media (max-width: 960px) {
   .nav { padding: 1.1rem 1.75rem; }
   .nav.scrolled { padding: .9rem 1.75rem; }
@@ -447,34 +422,54 @@ footer {
   .section { padding: 6rem 1.75rem; }
 }
 
-/* Tablets pequenos / phablets */
+/*
+  ── DISPOSITIVOS VERTICAIS (RETRATO) ──
+  Tablets em pé (iPad, Galaxy Tab, Surface) têm largura entre 600px e 1024px,
+  ultrapassando o breakpoint de 960px usado para paisagem. Sem isto, eles
+  herdavam o layout de desktop (menu completo, grids de 3 a 5 colunas) e
+  ficavam visualmente espremidos. Esta regra aplica o tratamento de
+  tablet a QUALQUER aparelho em pé até 1024px de largura, independente
+  de já cair ou não nos breakpoints de largura acima.
+*/
+@media (orientation: portrait) and (max-width: 1024px) {
+  .nav { padding: 1.1rem 1.5rem; }
+  .nav.scrolled { padding: .9rem 1.5rem; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .section { padding: 5.5rem 2rem; }
+  .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .photo-frame { aspect-ratio: 4/3; max-width: 380px; margin: 0 auto; }
+  .steps { grid-template-columns: repeat(2,1fr); }
+  .diffs { grid-template-columns: 1fr; gap: 2rem; }
+  .cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .testi-grid { grid-template-columns: 1fr; gap: 1.25rem; max-width: 540px; margin: 3.5rem auto 0; }
+  .contact-cards { grid-template-columns: repeat(2,1fr); max-width: 640px; margin: 0 auto 5rem; }
+  .stats { gap: 2rem; }
+  .hero-btns { width: 100%; max-width: 380px; margin: 3rem auto 0; }
+  .btn-gold, .btn-ghost { flex: 1 1 auto; text-align: center; }
+}
+
+/* Tablets pequenos em pé / phablets grandes */
 @media (max-width: 768px) {
   .nav-logo { font-size: .92rem; letter-spacing: .15em; }
   .hero { padding: 7.5rem 1.75rem 4.5rem; }
   .hero-name { letter-spacing: .2em; }
-  .gt-mono { width: 90px; height: 90px; }
-  .gt-mono .t { font-size: 6rem; }
-  .gt-mono .g { font-size: 3.6rem; }
   .sec-title { line-height: 1.25; }
   .hero-btns { width: 100%; max-width: 360px; margin: 3rem auto 0; }
   .btn-gold, .btn-ghost { flex: 1 1 auto; text-align: center; }
 }
 
-/* Celulares */
+/* Celulares (retrato é o padrão neste range) */
 @media (max-width: 600px) {
   .section { padding: 5rem 1.5rem; }
   .container { max-width: 100%; }
   .hero { padding: 7rem 1.25rem 4rem; min-height: 100svh; }
-  .hero-logo { font-size: 2.1rem; }
-  .gt-mono { width: 78px; height: 78px; margin-bottom: 2rem; }
-  .gt-mono .t { font-size: 5.2rem; }
-  .gt-mono .g { font-size: 3.1rem; }
   .hero-sub { letter-spacing: .22em; font-size: .65rem; }
-  .hero-btns { flex-direction: column; gap: .8rem; width: 100%; }
+  .hero-btns { flex-direction: column; gap: .8rem; width: 100%; max-width: none; }
   .btn-gold, .btn-ghost { width: 100%; padding: 1rem 1.5rem; }
   .steps { grid-template-columns: 1fr; }
   .step { padding: 1.8rem 1.2rem; }
-  .contact-cards { grid-template-columns: 1fr 1fr; }
+  .contact-cards { grid-template-columns: 1fr 1fr; max-width: none; margin-bottom: 4rem; }
   .cc { padding: 1.8rem 1.2rem; }
   .testi { padding: 2rem 1.5rem; }
   .stats { flex-direction: column; gap: 1.2rem; }
@@ -490,45 +485,13 @@ footer {
   .hero-name { font-size: clamp(1.5rem,7vw,2rem); letter-spacing: .14em; }
 }
 
-/* Orientacao paisagem em celular: evita hero gigante */
+/* Celular em paisagem: evita hero gigante cortando conteúdo */
 @media (max-height: 480px) and (orientation: landscape) {
   .hero { min-height: auto; padding: 8rem 1.5rem 3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-}
-
-  
-
-.gt-mono {
-  position: relative;
-  display: inline-block;
-  width: 110px;
-  height: 110px;
-  margin: 0 auto 2.5rem;
-}
-.gt-mono .t {
-  font-family: 'Playfair Display', serif;
-  font-size: 7.5rem;
-  font-weight: 400;
-  color: #C9A96E;
-  line-height: 1;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 1;
-}
-.gt-mono .g {
-  font-family: 'Playfair Display', serif;
-  font-size: 4.5rem;
-  font-weight: 400;
-  color: #C9A96E;
-  line-height: 1;
-  position: absolute;
-  left: 0;
-  top: 0.08em;
-  z-index: 2;
 }
 </style>
 </head>
@@ -783,13 +746,6 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- BIG CTA -->
-<!-- <div class="big-cta">
-  <h2 class="big-cta-t">Pronto para o próximo passo?</h2>
-  <p class="big-cta-s">Empresas e profissionais que confiam no processo chegam mais longe.</p>
-  <a href="https://wa.me/5515981007866" target="_blank" class="btn-gold">Falar no WhatsApp</a>
-</div> -->
 
 <!-- FOOTER -->
 <footer>
