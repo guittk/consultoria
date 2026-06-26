@@ -95,9 +95,23 @@
   opacity: 0; animation: fadeUp .9s ease .55s forwards;
 }
 .hero-sub {
-  font-size: .7rem; letter-spacing: .38em; text-transform: uppercase;
-  color: var(--gold-light); margin-top: .7rem; opacity: .75;
-  animation: fadeUp .9s ease .75s forwards; opacity: 0;
+  font-size: .7rem;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-top: .7rem;
+  opacity: .75;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .35em;
+
+  text-align: center;
+}
+.dot {
+  white-space: nowrap;
+  margin: 0 .4em;
 }
 .divider-line {
   width: 56px; height: 1px;
@@ -328,7 +342,7 @@
 }
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2px;
   background: var(--cream-warm);
 }
@@ -337,6 +351,9 @@
   text-align: center; display: flex; flex-direction: column;
   align-items: center; gap: .9rem;
   transition: background .35s; cursor: pointer;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 .cc:hover { background: var(--wine); }
 .cc:hover .cc-lbl, .cc:hover .cc-val { color: var(--gold-light); }
@@ -492,12 +509,6 @@ footer {
   .hero { min-height: auto; padding: 8rem 1.5rem 3rem; }
 }
 
-@media (max-width: 470px) {
-  .contact-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
@@ -533,8 +544,10 @@ footer {
   <!-- <img src="logo_gt.png" alt="GT Consultoria de Carreira" style="width:130px;height:130px;object-fit:cover;border-radius:50%;margin:0 auto 2rem;display:block;border:2px solid rgba(201,169,110,0.4);" /> -->
   <img src="logo_gt.png" alt="GT Consultoria de Carreira" style="width:130px;height:130px;object-fit:cover;border-radius:50%;margin:0 auto 2rem;display:block;" />
   <h1 class="hero-name">Geovana Trovalim</h1>
-  <p class="hero-sub">Consultoria de Carreira  ·  Recrutamento e Seleção</p>
-  <div class="divider-line"></div>
+<p class="hero-sub">
+  Consultoria de Carreira <span class="dot">·</span> Recrutamento e Seleção
+</p>
+<div class="divider-line"></div>
   <p class="hero-tagline">Conectando talentos a resultados reais.</p>
   <div class="hero-btns">
     <a href="#empresas" class="btn-gold">Para Empresas</a>
